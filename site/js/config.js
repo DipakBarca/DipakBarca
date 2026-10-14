@@ -4,8 +4,8 @@
 export const SHOP = {
   name: { en: "Dipak Pharmacy", ne: "दीपक फार्मेसी" },
   tagline: {
-    en: "Trusted medicines and care for our village",
-    ne: "हाम्रो गाउँका लागि भरपर्दो औषधि र सेवा",
+    en: "Trusted medicines and care in Nawalpur, Lalbandi",
+    ne: "नवलपुर, लालबन्दीमा भरपर्दो औषधि र सेवा",
   },
 
   // Photo of the shop front: put the file in site/images/ and write its path,
@@ -17,7 +17,7 @@ export const SHOP = {
   // WhatsApp number: country code + number, digits only (no +, spaces or dashes).
   whatsapp: "9779844070470",
 
-  address: { en: "", ne: "" }, // e.g. { en: "Ward No. 5, Village, District", ne: "वडा नं. ५, गाउँ, जिल्ला" }
+  address: { en: "Lalbandi-1, Nawalpur, Sarlahi", ne: "लालबन्दी-१, नवलपुर, सर्लाही" },
   landmark: { en: "", ne: "" }, // e.g. { en: "Next to the health post", ne: "स्वास्थ्य चौकीको छेउमा" }
   // Open the shop location in Google Maps, tap Share, and paste the link here.
   mapsUrl: "",
