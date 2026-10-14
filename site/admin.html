@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ne">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>स्टक</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0b7a5a" />
+    <link rel="manifest" href="admin.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <script type="module" src="js/admin.js"></script>
+  </head>
+  <body class="admin">
+    <header class="site-header">
+      <div class="container">
+        <span class="brand">
+          <span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg></span>
+          <span data-a="title">स्टक</span>
+        </span>
+        <button class="lang-btn" type="button" data-lang-toggle data-a="lang_switch">English</button>
+      </div>
+      <div class="sync container" id="sync" role="status"></div>
+    </header>
+
+    <div class="demo-banner" id="demo-banner" data-a="demo_banner" hidden></div>
+
+    <main class="container">
+      <section id="view-loading" class="card center">
+        <p data-a="loading">लोड हुँदैछ…</p>
+      </section>
+
+      <section id="view-error" class="card center" hidden>
+        <p data-a="load_error"></p>
+        <button class="btn btn-primary" type="button" onclick="location.reload()" data-a="retry">फेरि प्रयास गर्नुहोस्</button>
+      </section>
+
+      <section id="view-signin" class="card center" hidden>
+        <h1 data-a="welcome">नमस्ते!</h1>
+        <p data-a="signin_help"></p>
+        <button class="btn btn-primary btn-big" type="button" id="signin-btn" data-a="signin">Google बाट लगइन गर्नुहोस्</button>
+      </section>
+
+      <section id="view-denied" class="card center" hidden>
+        <p><strong data-a="denied"></strong></p>
+        <p class="muted" id="denied-email"></p>
+        <button class="btn btn-outline" type="button" data-signout data-a="signout">लगआउट</button>
+      </section>
+
+      <div id="view-app" hidden>
+        <div class="admin-tabs" role="tablist">
+          <button type="button" role="tab" id="tab-btn-stock" aria-controls="tab-stock" aria-selected="true" data-tab="stock">
+            <span aria-hidden="true">💊</span> <span data-a="tab_stock">औषधि</span>
+          </button>
+          <button type="button" role="tab" id="tab-btn-shop" aria-controls="tab-shop" aria-selected="false" data-tab="shop">
+            <span aria-hidden="true">📢</span> <span data-a="tab_shop">सूचना / पसल</span>
+          </button>
+        </div>
+
+        <section id="tab-stock" role="tabpanel" aria-labelledby="tab-btn-stock">
+          <div class="admin-search">
+            <label class="visually-hidden" for="a-q" data-a="search">खोज्नुहोस्</label>
+            <input id="a-q" type="search" autocomplete="off" data-a-placeholder="search" />
+            <div class="chips">
+              <button type="button" class="chip" data-filter="all" aria-pressed="true"></button>
+              <button type="button" class="chip" data-filter="out" aria-pressed="false"></button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-big wide" type="button" id="add-btn" data-a="add">+ नयाँ औषधि थप्नुहोस्</button>
+
+          <ul class="stock-list" id="stock-list"></ul>
+          <p class="card center muted" id="stock-empty" hidden></p>
+        </section>
+
+        <section id="tab-shop" role="tabpanel" aria-labelledby="tab-btn-shop" hidden>
+          <div class="card">
+            <h2 data-a="closed_title">आज पसल बन्द छ?</h2>
+            <button type="button" class="big-switch" id="closed-toggle" aria-pressed="false"></button>
+            <p class="muted" data-a="closed_help"></p>
+          </div>
+
+          <div class="card">
+            <h2 data-a="notice_title">ग्राहकका लागि सूचना</h2>
+            <p class="muted" data-a="notice_help"></p>
+            <label class="visually-hidden" for="notice-input" data-a="notice_title"></label>
+            <textarea id="notice-input" rows="3" maxlength="300"></textarea>
+            <div class="btn-row">
+              <button class="btn btn-primary" type="button" id="notice-save" data-a="save">सेभ गर्नुहोस्</button>
+              <button class="btn btn-outline" type="button" id="notice-clear" data-a="clear">हटाउनुहोस्</button>
+            </div>
+          </div>
+
+          <a class="btn btn-outline wide" href="index.html" target="_blank" data-a="view_site">वेबसाइट हेर्नुहोस्</a>
+
+          <details class="card setup">
+            <summary>Setup tools (for the family helper)</summary>
+            <h3>Add many medicines at once</h3>
+            <p class="muted">
+              One medicine per line. Optionally add the group and stock after a <code>|</code> or a tab, e.g.
+              <code>Amlodipine 5mg tablet | bp</code> or <code>ORS | stomach | no</code>. Rows copied from Google Sheets
+              (name, group, available) work too. Names already in the list are skipped.
+            </p>
+            <p class="muted" id="group-keys"></p>
+            <textarea id="bulk-input" rows="8" spellcheck="false"></textarea>
+            <button class="btn btn-primary" type="button" id="bulk-add">Add to list</button>
+            <p id="bulk-result" role="status"></p>
+
+            <h3>Backup</h3>
+            <button class="btn btn-outline" type="button" id="export">Download list (CSV)</button>
+
+            <h3>Account</h3>
+            <p class="muted" id="signed-in-as"></p>
+            <button class="btn btn-outline" type="button" data-signout>Sign out</button>
+          </details>
+        </section>
+      </div>
+    </main>
+
+    <dialog id="item-dialog" class="sheet">
+      <form id="item-form" method="dialog">
+        <h2 id="item-title"></h2>
+        <label class="field">
+          <span data-a="name_label">औषधिको नाम</span>
+          <input id="item-name" type="text" autocomplete="off" required maxlength="80" />
+        </label>
+        <p class="form-error" id="item-error" role="alert" hidden></p>
+        <fieldset class="field">
+          <legend data-a="group_label">समूह</legend>
+          <div class="group-grid" id="group-grid"></div>
+        </fieldset>
+        <div class="btn-row">
+          <button class="btn btn-primary" type="submit" data-a="save">सेभ गर्नुहोस्</button>
+          <button class="btn btn-outline" type="button" id="item-cancel" data-a="cancel">रद्द गर्नुहोस्</button>
+        </div>
+        <button class="btn btn-danger wide" type="button" id="item-remove" data-a="remove">यो औषधि हटाउनुहोस्</button>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" hidden>
+      <span id="toast-text"></span>
+      <button type="button" id="toast-undo" data-a="undo">↶ फिर्ता</button>
+    </div>
+  </body>
+</html>

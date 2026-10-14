@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pharmacy</title>
+    <meta name="description" content="Village pharmacy: check which medicines are in stock, opening hours, BP check and first aid." />
+    <meta name="theme-color" content="#0b7a5a" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="js/home.js"></script>
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg></span>
+          <span data-shop="name">Pharmacy</span>
+        </a>
+        <button class="lang-btn" type="button" data-lang-toggle data-i18n="lang_switch">नेपाली</button>
+      </div>
+      <nav class="nav container" aria-label="Main">
+        <a href="index.html" data-nav="home" data-i18n="nav_home">Home</a>
+        <a href="medicines.html" data-nav="medicines" data-i18n="nav_medicines">Medicines</a>
+        <a href="contact.html" data-nav="contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <img class="hero-photo" data-shop-photo hidden alt="" />
+        <div class="hero-body">
+          <h1 data-shop="name">Pharmacy</h1>
+          <p class="tagline" data-shop="tagline"></p>
+          <div class="status" data-status role="status"></div>
+          <div class="btn-row">
+            <a class="btn btn-primary" data-shop-href="tel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              <span data-i18n="call">Call</span>
+            </a>
+            <a class="btn btn-whatsapp" data-shop-href="whatsapp" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+              <span data-i18n="whatsapp">WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="notice" id="notice" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+        <div>
+          <strong data-i18n="notice">Notice</strong>
+          <p id="notice-text"></p>
+        </div>
+      </section>
+
+      <section>
+        <a class="card link-card" href="medicines.html">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" /><path d="m8.5 8.5 7 7" /></svg></span>
+          <span data-i18n="check_medicines">Check if a medicine is available</span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+      </section>
+
+      <section>
+        <h2 data-i18n="services_title">Our services</h2>
+        <div class="services">
+          <div class="card service">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" /><path d="m8.5 8.5 7 7" /></svg></div>
+            <h3 data-i18n="svc_medicines">Medicines &amp; advice</h3>
+            <p data-i18n="svc_medicines_desc"></p>
+          </div>
+          <div class="card service">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" /></svg></div>
+            <h3 data-i18n="svc_bp">Blood pressure check</h3>
+            <p data-i18n="svc_bp_desc"></p>
+          </div>
+          <div class="card service">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M12 8v8M8 12h8" /></svg></div>
+            <h3 data-i18n="svc_firstaid">First aid</h3>
+            <p data-i18n="svc_firstaid_desc"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 data-i18n="about_title">About us</h2>
+        <p data-i18n="about_text"></p>
+        <dl class="facts">
+          <div><dt data-i18n="pharmacist">Pharmacist</dt><dd data-shop="pharmacist"></dd></div>
+          <div><dt data-i18n="npc_reg">Nepal Pharmacy Council Reg. No.</dt><dd data-shop="npcRegNo"></dd></div>
+          <div><dt data-i18n="dda_license">DDA License No.</dt><dd data-shop="ddaLicenseNo"></dd></div>
+          <div><dt data-i18n="address">Address</dt><dd data-shop="address"></dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="rx" data-i18n="rx_note"></p>
+        <p>© <span data-year></span> <span data-shop="name"></span> · <a href="admin.html" data-i18n="staff_login">Staff</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
