@@ -90,7 +90,7 @@
 /* Search */
 .admin-search {
   position: sticky;
-  top: var(--header-h, 80px);
+  top: calc(var(--header-h, 80px) + env(safe-area-inset-top, 0px));
   z-index: 5;
   background: var(--bg);
   padding: 4px 0 6px;
@@ -177,19 +177,13 @@
 
 .stock-toggle.has {
   background: var(--ok);
-  color: #fff;
+  color: var(--on-ok);
 }
 
 .stock-toggle.out {
   background: var(--bad-soft);
   color: var(--bad);
   border-color: var(--bad);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .stock-toggle.has {
-    color: #06231a;
-  }
 }
 
 /* Shop tab */
@@ -322,7 +316,7 @@
   position: fixed;
   left: 12px;
   right: 12px;
-  bottom: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   max-width: 560px;
   margin: 0 auto;
   display: flex;
