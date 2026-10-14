@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dipakpharmacy-47654.web.app/sitemap.xml

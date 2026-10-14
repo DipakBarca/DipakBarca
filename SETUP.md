@@ -96,7 +96,22 @@ Nepali citizens and registered businesses can get a `.com.np` domain free at <ht
 2. **Authentication → Settings → Authorized domains → Add domain** (so sign-in works on the new domain).
 3. Set `authDomain` in `site/js/firebase-config.js` to the new domain and deploy again.
 
-## 7. Outside the website
+## 7. Get found on Google
+
+A new website does not show up in Google straight away. Google usually finds and lists it within a few days to a few weeks. These steps speed it up:
+
+1. **Google Search Console** (<https://search.google.com/search-console>), signed in as mahato.d8877@gmail.com:
+   - **Add property → URL prefix →** `https://dipakpharmacy-47654.web.app/`
+   - Verify with the **HTML tag** method: put the `<meta name="google-site-verification" …>` tag in `site/index.html` next to the other `<meta>` tags, deploy, then click **Verify**.
+   - **Sitemaps →** submit `sitemap.xml`.
+   - **URL inspection →** paste the home page address → **Request indexing**.
+2. **Google Business Profile** (see below) matters most for people nearby searching "pharmacy" on Google Maps.
+
+The pages already include what Google and link previews look for: titles and descriptions, a `sitemap.xml`, business details (name, phone, pharmacist, services) and a preview image for WhatsApp and Facebook.
+
+If you later move to a `.com.np` domain, replace `https://dipakpharmacy-47654.web.app/` with the new address in the three HTML files, `sitemap.xml` and `robots.txt`.
+
+## 8. Outside the website
 
 - **Google Business Profile** (Google Maps listing): free, and it is what shows up for "pharmacy near me". Link it to the website.
 - **Facebook page**: post notices and link to the website. Do not sell medicines through it (DDA rules).

@@ -52,8 +52,7 @@ function fillShopDetails() {
     img.hidden = false;
   });
   const pageTitle = document.body.dataset.titleKey;
-  const shopName = pick(SHOP.name);
-  document.title = pageTitle ? `${t(pageTitle)} · ${shopName}` : shopName;
+  if (pageTitle) document.title = `${t(pageTitle)} · ${pick(SHOP.name)}`;
 }
 
 let lastClosedDate = "";
