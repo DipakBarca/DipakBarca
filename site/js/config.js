@@ -20,7 +20,7 @@ export const SHOP = {
   address: { en: "Lalbandi-1, Nawalpur, Sarlahi", ne: "लालबन्दी-१, नवलपुर, सर्लाही" },
   landmark: { en: "", ne: "" }, // e.g. { en: "Next to the health post", ne: "स्वास्थ्य चौकीको छेउमा" }
   // Open the shop location in Google Maps, tap Share, and paste the link here.
-  mapsUrl: "",
+  mapsUrl: "https://maps.app.goo.gl/W791RP8zZB15zTpz5",
 
   // Opening hours in Nepal time. null means "hours vary": the site asks
   // customers to call before coming instead of showing open/closed times.
