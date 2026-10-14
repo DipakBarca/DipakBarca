@@ -26,7 +26,9 @@ npx serve site
 
 ## 2. Fill in the shop details
 
-Edit **`site/js/config.js`**: shop name (English and Nepali), phone, WhatsApp number, address, landmark, Google Maps link, opening hours, pharmacist name, NPC and DDA numbers, nearest hospital.
+Edit **`site/js/config.js`**. Shop name, phone, WhatsApp and pharmacist are filled in. Still to add: address, landmark, Google Maps link, NPC and DDA numbers, nearest hospital. Anything left as `""` is hidden on the site.
+
+Opening hours are set to `null` ("hours vary"): the site asks customers to call before coming. If the shop later keeps fixed hours, fill in `hours` as shown in the comment, and the site will show "Open now / Closed now" automatically.
 
 Also change `"name"` in `site/manifest.webmanifest` and `site/admin.webmanifest` to the shop name. That is the name shown under the home-screen icon.
 
@@ -41,7 +43,7 @@ Firebase stores the stock list and handles sign-in. The free "Spark" plan is eno
 3. **Build → Authentication → Get started → Sign-in method → Google → Enable.**
 4. **Project settings (⚙️) → Your apps → Web (`</>`)** → register an app. Copy `apiKey`, `authDomain`, `projectId` and `appId` into **`site/js/firebase-config.js`**.
    These values are meant to be public. The security rules are what protect the data.
-5. Put the Gmail addresses of everyone who may change the stock (your parents and you) in **both**:
+5. `mahato.d8877@gmail.com` is already allowed. To let other people change the stock (for example a parent's own Gmail), add their address to **both**:
    - `firestore.rules`, the list inside `in [ ... ]`
    - `site/js/config.js`, `ADMIN_EMAILS`
 6. Deploy the site and the rules:

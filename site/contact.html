@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact</title>
+    <title>Contact · Dipak Pharmacy</title>
     <meta name="description" content="Phone, WhatsApp, address, opening hours and emergency numbers." />
     <meta name="theme-color" content="#0b7a5a" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -17,7 +17,7 @@
       <div class="container">
         <a class="brand" href="index.html">
           <span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg></span>
-          <span data-shop="name">Pharmacy</span>
+          <span data-shop="name">Dipak Pharmacy</span>
         </a>
         <button class="lang-btn" type="button" data-lang-toggle data-i18n="lang_switch">नेपाली</button>
       </div>
@@ -48,11 +48,11 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-optional="address">
           <h2 data-i18n="address">Address</h2>
           <p data-shop="address"></p>
-          <p class="muted"><span data-i18n="landmark">Landmark</span>: <span data-shop="landmark"></span></p>
-          <a class="btn btn-outline" data-shop-href="maps" target="_blank" rel="noopener">
+          <p class="muted" data-optional><span data-i18n="landmark">Landmark</span>: <span data-shop="landmark"></span></p>
+          <a class="btn btn-outline" data-shop-href="maps" data-optional target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
             <span data-i18n="open_maps">Open in Google Maps</span>
           </a>
@@ -60,7 +60,8 @@
 
         <div class="card">
           <h2 data-i18n="hours_title">Opening hours</h2>
-          <table class="hours"><tbody id="hours"></tbody></table>
+          <p id="hours-vary" data-i18n="hours_vary_long" hidden></p>
+          <table class="hours" id="hours-table"><tbody id="hours"></tbody></table>
         </div>
 
         <div>

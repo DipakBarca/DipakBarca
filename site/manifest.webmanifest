@@ -1,7 +1,7 @@
 {
   "id": "index.html",
-  "name": "Pharmacy",
-  "short_name": "Pharmacy",
+  "name": "Dipak Pharmacy",
+  "short_name": "Dipak Pharmacy",
   "start_url": "index.html",
   "scope": "./",
   "display": "standalone",

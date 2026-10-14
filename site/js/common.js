@@ -30,7 +30,11 @@ export function formatDate(ms) {
 
 function fillShopDetails() {
   document.querySelectorAll("[data-shop]").forEach((el) => {
-    el.textContent = localDigits(pick(SHOP[el.dataset.shop]));
+    const value = localDigits(pick(SHOP[el.dataset.shop]));
+    el.textContent = value;
+    // Details not filled in yet (e.g. licence numbers) are hidden, not shown blank.
+    const optional = el.closest("[data-optional]");
+    if (optional) optional.hidden = !value;
   });
   const links = {
     tel: telLink(SHOP.phone),
@@ -39,6 +43,7 @@ function fillShopDetails() {
   };
   document.querySelectorAll("[data-shop-href]").forEach((el) => {
     el.href = links[el.dataset.shopHref];
+    if (el.hasAttribute("data-optional")) el.hidden = !links[el.dataset.shopHref];
   });
   document.querySelectorAll("[data-shop-photo]").forEach((img) => {
     if (!SHOP.photo) return;
@@ -58,7 +63,10 @@ export function renderStatus(closedDate = lastClosedDate) {
   const status = shopStatus(SHOP.hours, closedDate);
   let label;
   let detail = "";
-  if (status.open) {
+  if (status.open === null) {
+    label = t("hours_vary");
+    detail = t("call_first");
+  } else if (status.open) {
     label = t("open_now");
     detail = t("closes_at", { time: formatTime(status.closesAt) });
   } else {
@@ -70,7 +78,8 @@ export function renderStatus(closedDate = lastClosedDate) {
     }
   }
   document.querySelectorAll("[data-status]").forEach((el) => {
-    el.classList.toggle("is-open", status.open);
+    el.classList.toggle("is-open", status.open === true);
+    el.classList.toggle("is-unknown", status.open === null);
     el.innerHTML = "";
     const strong = document.createElement("strong");
     strong.textContent = label;

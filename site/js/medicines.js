@@ -50,7 +50,11 @@ function renderList() {
     return;
   }
 
-  const items = itemList(data).filter(
+  const all = itemList(data);
+  document.querySelector("#empty p").textContent = all.length ? t("not_found") : t("list_coming");
+  countEl.hidden = all.length === 0;
+
+  const items = all.filter(
     (item) => (group === "all" || item.group === group) && item.name.toLowerCase().includes(query),
   );
 

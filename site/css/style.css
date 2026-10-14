@@ -324,7 +324,7 @@ section {
 .status {
   display: inline-block;
   padding: 6px 12px;
-  border-radius: 999px;
+  border-radius: 16px;
   background: var(--bad-soft);
   color: var(--bad);
   margin-bottom: 16px;
@@ -334,6 +334,11 @@ section {
 .status.is-open {
   background: var(--ok-soft);
   color: var(--ok);
+}
+
+.status.is-unknown {
+  background: var(--surface-2);
+  color: var(--text);
 }
 
 .notice {

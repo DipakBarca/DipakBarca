@@ -1,8 +1,8 @@
 // Shop details shown on the website.
-// Replace every placeholder below with your parents' real details.
+// Anything left as "" is hidden on the site until you fill it in.
 
 export const SHOP = {
-  name: { en: "Your Pharmacy Name", ne: "तपाईंको फार्मेसीको नाम" },
+  name: { en: "Dipak Pharmacy", ne: "दीपक फार्मेसी" },
   tagline: {
     en: "Trusted medicines and care for our village",
     ne: "हाम्रो गाउँका लागि भरपर्दो औषधि र सेवा",
@@ -13,48 +13,33 @@ export const SHOP = {
   photo: "",
 
   // Phone number shown on the site and used for the Call button.
-  phone: "+977-9800000000",
+  phone: "+977 9844070470",
   // WhatsApp number: country code + number, digits only (no +, spaces or dashes).
-  whatsapp: "9779800000000",
+  whatsapp: "9779844070470",
 
-  address: {
-    en: "Ward No. 5, Village Name, District, Nepal",
-    ne: "वडा नं. ५, गाउँको नाम, जिल्ला, नेपाल",
-  },
-  landmark: {
-    en: "Next to the health post, opposite the school",
-    ne: "स्वास्थ्य चौकीको छेउमा, विद्यालयको अगाडि",
-  },
+  address: { en: "", ne: "" }, // e.g. { en: "Ward No. 5, Village, District", ne: "वडा नं. ५, गाउँ, जिल्ला" }
+  landmark: { en: "", ne: "" }, // e.g. { en: "Next to the health post", ne: "स्वास्थ्य चौकीको छेउमा" }
   // Open the shop location in Google Maps, tap Share, and paste the link here.
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nepal",
+  mapsUrl: "",
 
-  // Opening hours in Nepal time, 24-hour format. Use null for a closed day.
-  // 0 = Sunday (आइतबार) ... 6 = Saturday (शनिबार)
-  hours: {
-    0: ["07:00", "20:00"],
-    1: ["07:00", "20:00"],
-    2: ["07:00", "20:00"],
-    3: ["07:00", "20:00"],
-    4: ["07:00", "20:00"],
-    5: ["07:00", "20:00"],
-    6: ["08:00", "12:00"],
-  },
+  // Opening hours in Nepal time. null means "hours vary": the site asks
+  // customers to call before coming instead of showing open/closed times.
+  // For fixed hours, use 24-hour times per day (0 = Sunday … 6 = Saturday),
+  // with null for a closed day, e.g.:
+  //   hours: { 0: ["07:00", "20:00"], 1: ["07:00", "20:00"], …, 6: null },
+  hours: null,
 
-  pharmacist: { en: "Pharmacist Name", ne: "फार्मासिस्टको नाम" },
-  npcRegNo: "NPC-00000",
-  ddaLicenseNo: "DDA-00000",
+  pharmacist: { en: "Raj Kumar Mahato", ne: "राज कुमार महतो" },
+  npcRegNo: "",
+  ddaLicenseNo: "",
 
   nearestHospital: {
-    name: { en: "District Hospital", ne: "जिल्ला अस्पताल" },
-    phone: "+977-00-000000",
+    name: { en: "", ne: "" },
+    phone: "",
   },
 };
 
 // Google accounts allowed to open the stock screen (admin.html).
 // Keep this list the same as the one in firestore.rules — the rules file is
 // what actually protects the data; this list only shows a friendly message.
-export const ADMIN_EMAILS = [
-  "parent1@gmail.com",
-  "parent2@gmail.com",
-  "you@gmail.com",
-];
+export const ADMIN_EMAILS = ["mahato.d8877@gmail.com"];

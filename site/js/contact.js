@@ -7,6 +7,9 @@ import { cachedPublicData, loadPublicData } from "./store.js";
 initPage();
 
 function renderHours() {
+  document.getElementById("hours-vary").hidden = Boolean(SHOP.hours);
+  document.getElementById("hours-table").hidden = !SHOP.hours;
+  if (!SHOP.hours) return;
   const today = nepalNow().day;
   // Start the week on Sunday, as calendars in Nepal do.
   const rows = [0, 1, 2, 3, 4, 5, 6].map((day) => {
@@ -27,6 +30,8 @@ function renderEmergency() {
   document.getElementById("num-ambulance").textContent = localDigits("102");
   document.getElementById("num-police").textContent = localDigits("100");
   const hospital = SHOP.nearestHospital;
+  document.getElementById("hospital").hidden = !hospital.phone;
+  if (!hospital.phone) return;
   document.getElementById("hospital").href = telLink(hospital.phone);
   document.getElementById("hospital-name").textContent = pick(hospital.name);
   document.getElementById("hospital-phone").textContent = localDigits(hospital.phone);

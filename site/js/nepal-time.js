@@ -29,10 +29,12 @@ const toMinutes = (hhmm) => {
   return h * 60 + m;
 };
 
-// Returns { open: true, closesAt } or { open: false, closedToday, opensAt, inDays }.
+// Returns { open: true, closesAt } or { open: false, closedToday, opensAt, inDays },
+// or { open: null, closedToday } when the shop has no fixed hours.
 export function shopStatus(hours, closedDate, date = new Date()) {
   const now = nepalNow(date);
   const closedToday = closedDate === now.dateStr;
+  if (!hours) return { open: closedToday ? false : null, closedToday };
   const todayHours = hours[now.day];
 
   if (!closedToday && todayHours) {
